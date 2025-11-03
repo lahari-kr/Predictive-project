@@ -5,7 +5,7 @@ This project leverages machine learning to predict the severity of road accident
 1. Project Structure
 AI_Road_Accident_Prediction/
 │
-├── AccidentsBig.csv
+├── AccidentsBig_compressed.csv
 ├── CasualtiesBig.csv
 ├── VehiclesBig.csv
 ├── road_accident_prediction.ipynb
@@ -78,18 +78,14 @@ LightGBM	0.89	0.84
 
 (Results may vary depending on training subset and preprocessing choices.)
 
-⚙️ Installation & Setup
-1️⃣ Clone the repository
-git clone https://github.com/<your-username>/AI-Road-Accident-Prediction.git
-cd AI-Road-Accident-Prediction
 
-2️⃣ Install dependencies
+2️ Install dependencies
 pip install -r requirements.txt
 
-3️⃣ Run the notebook
+3️ Run the notebook
 jupyter notebook road_accident_prediction.ipynb
 
-4️⃣  Run the Streamlit App
+4️ Run the Streamlit App
 streamlit run road_accident_prediction_app.py
 
 📈 Visualization
