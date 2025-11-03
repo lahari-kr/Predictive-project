@@ -1,140 +1,143 @@
-1. Prepare Your Folder Locally
+AI-Driven Road Accident Prediction and Prevention
 
-Create a folder (e.g. road-accident-prediction/) containing:
+This project leverages machine learning to predict the severity of road accidents using large-scale datasets on accidents, vehicles, and casualties. The goal is to assist traffic authorities and city planners in identifying high-risk areas, improving road safety infrastructure, and deploying preventive measures to reduce severe accidents.
 
-road-accident-prediction/
+1. Project Structure
+AI_Road_Accident_Prediction/
 │
-├── road_accident_prediction.ipynb      # your notebook
-├── requirements.txt                    # uploaded dependencies
-├── dataset.zip                   # sample dat
-└── README.md                           # (we’ll create this next)
-
-📄 2. Create a README File
-
-Create a file named README.md in the same folder.
-You can copy-paste this starter template:
-
-# AI-Driven Road Accident Prediction & Prevention
-
-This project uses **machine learning and LightGBM** to predict accident severity and support prevention strategies using data from accidents, vehicles, and casualties.
-
-##  Overview
-
-The goal of this project is to:
-- Analyze road accident data.
-- Predict **Accident Severity** using AI models (Random Forest, LightGBM).
-- Identify the **most important risk factors** influencing severity.
-- Provide insights for prevention and safety improvement.
-
-## 🧠Features
-
-- End-to-end ML pipeline (data loading → preprocessing → model training → evaluation)
-- Supports RandomForest and LightGBM classifiers
-- Feature importance visualization
-- Model saved as `.joblib` for deployment
-
-##  Dataset Files
-
-| File | Description |
-|------|--------------|
-| `AccidentsBig.csv` | Accident-level data |
-| `CasualtiesBig.csv` | Casualty-level data |
-| `VehiclesBig.csv` | Vehicle-level data |
-
-*(Note: for large or sensitive data, consider using a sample or `.gitignore` these files.)*
-
-## Installation
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/road-accident-prediction.git
-   cd road-accident-prediction
+├── AccidentsBig.csv
+├── CasualtiesBig.csv
+├── VehiclesBig.csv
+├── road_accident_prediction.ipynb
+├── requirements.txt
 
 
-Create a virtual environment and install dependencies:
+2. Objective
 
+To build an AI-driven predictive model that:
+
+Classifies the severity of road accidents (slight, serious, fatal)
+
+Identifies key factors influencing accident outcomes (weather, road type, lighting, etc.)
+
+Provides insights for proactive prevention and policy making
+
+3. Approach
+
+Data Integration
+
+Combined three datasets (AccidentsBig.csv, CasualtiesBig.csv, and VehiclesBig.csv) using the Accident_Index key.
+
+Aggregated vehicle and casualty counts per accident to enrich the main accident dataset.
+
+Data Cleaning & Preprocessing
+
+Handled missing values and categorical encoding.
+
+Removed irrelevant or high-cardinality columns.
+
+Scaled numerical features for model training.
+
+Exploratory Data Analysis (EDA)
+
+Analyzed severity distribution.
+
+Explored correlations between features such as weather, lighting, and road type.
+
+Modeling
+
+Built multiple ML models:
+
+Random Forest Classifier (baseline)
+
+LightGBM Classifier (optimized gradient boosting)
+
+Used accuracy, F1-score, and confusion matrix for evaluation.
+
+Feature Importance
+
+Extracted and visualized key predictors influencing accident severity.
+
+Prevention Insights
+
+Highlighted actionable insights for improving road safety and accident prevention strategies.
+
+4. Key Features
+Feature	Description
+Speed_limit	Speed limit at accident location
+Road_Type	Type of road (single carriageway, dual, etc.)
+Weather_Conditions	Weather during the accident
+Light_Conditions	Lighting conditions (daylight, darkness, etc.)
+Urban_or_Rural_Area	Urban vs rural classification
+Number_of_Vehicles	Vehicles involved in the accident
+Number_of_Casualties	Number of casualties reported
+🧩 Model Performance (Example)
+Model	Accuracy	F1-score (Weighted)
+Random Forest	0.86	0.81
+LightGBM	0.89	0.84
+
+(Results may vary depending on training subset and preprocessing choices.)
+
+⚙️ Installation & Setup
+1️⃣ Clone the repository
+git clone https://github.com/<your-username>/AI-Road-Accident-Prediction.git
+cd AI-Road-Accident-Prediction
+
+2️⃣ Install dependencies
 pip install -r requirements.txt
 
-
-Open the notebook:
-
+3️⃣ Run the notebook
 jupyter notebook road_accident_prediction.ipynb
 
- Running the Model
+4️⃣  Run the Streamlit App
+streamlit run road_accident_prediction_app.py
 
-Inside the notebook:
+📈 Visualization
 
-Run preprocessing and model training cells.
+The notebook and app include:
 
-Train a Random Forest or LightGBM model.
+Severity distribution plots
 
-View accuracy, confusion matrix, and feature importances.
+Feature importance bar charts
 
-Example Output
+Correlation heatmaps
 
- Future Enhancements
+Interactive dashboards (Plotly & Streamlit)
 
-Real-time prediction dashboard (Streamlit)
+5.Future Enhancements
 
-Model deployment via REST API
+Integrate real-time traffic and weather APIs
 
-Integration with live weather & traffic feeds
+Build deep learning models for enhanced accuracy
 
-Accident prevention recommendations
+Create geospatial risk heatmaps
 
-🧑‍💻 Tech Stack
+Develop accident prevention recommendation systems
 
-Python 3.x
+Deploy as a web-based early warning system
 
-Scikit-learn
+6. Real-World Applications
 
-LightGBM
+Traffic Police: Predict high-risk zones and times for patrol allocation
 
-Pandas / NumPy
+Urban Planners: Identify dangerous junctions needing redesign
 
-Matplotlib / Plotly
+Insurance Companies: Estimate accident risk for premium adjustments
 
-Streamlit
+Public Awareness: Provide data-driven road safety campaigns
 
+7. Requirements
 
+See requirements.txt
+:
 
-##  3. Initialize and Push to GitHub
-Run these commands in your terminal (replace with your repo name):
-
-```bash
-# Initialize Git
-git init
-git add .
-git commit -m "Initial commit - AI Driven Road Accident Prediction"
-
-# Create repo on GitHub first (via website or CLI)
-# then connect and push:
-git remote add origin https://github.com/YOUR-USERNAME/road-accident-prediction.git
-git branch -M main
-git push -u origin main
-
- 4. Optional: Ignore Large or Private Files
-
-Create a .gitignore file:
-
-# Ignore large datasets
-*.csv
-*.joblib
-__pycache__/
-.ipynb_checkpoints/
-.env
+scikit-learn==1.3.0
+pandas==2.0.3
+numpy==1.24.3
+streamlit==1.28.0
+xgboost==2.0.2
+plotly==5.18.0
+matplotlib==3.8.2
+lightgbm==4.2.2
 
 
-This keeps your repo light — you can upload only sample CSVs instead.
-
- 5. (Optional) Add Streamlit App
-
-If you want to make it interactive:
-
-Create a file app.py using Streamlit.
-
-Load your trained model.
-
-Add inputs for weather, road type, etc.
-
-Predict and display severity risk live.
